@@ -28,6 +28,12 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="CharityBlockchain\db.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CharityBlockchain\user.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="runserver.py" />
     <Compile Include="CharityBlockchain\__init__.py" />
     <Compile Include="CharityBlockchain\views.py" />
@@ -39,8 +45,11 @@
     <Folder Include="CharityBlockchain\static\fonts\" />
     <Folder Include="CharityBlockchain\static\scripts\" />
     <Folder Include="CharityBlockchain\templates\" />
+    <Folder Include="CharityBlockchain\templates\user\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CharityBlockchain\templates\user\register.html" />
+    <Content Include="CharityBlockchain\templates\user\login.html" />
     <Content Include="requirements.txt" />
     <Content Include="CharityBlockchain\static\content\bootstrap.css" />
     <Content Include="CharityBlockchain\static\content\bootstrap.min.css" />
