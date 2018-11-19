@@ -24,7 +24,7 @@ def register():
             error="请输入用户名!"
         elif not password:
             error="请输入密码!"
-        elif db.exectue('SELECT id FROM user WHERE username = ?',
+        elif db.execute('SELECT id FROM user WHERE username = ?',
             (username,)).fetchone() is not None:
             error = f'用户名 {username} 已存在!'
         if error is None:
@@ -53,7 +53,7 @@ def login():
         if error is None:
             session.clear()
             session['user_id'] = user['id']
-            return redirect(url_for('/home'))
+            return redirect(url_for('logintodo'))
         flash(error)
 
     return render_template('user/login.html')
@@ -69,7 +69,7 @@ def load_logged_in_user():
 @user.route('/logout')
 def logout():
     session.clear()
-    return redirect(url_for('index'))
+    return redirect(url_for('home'))
 
 def login_required(view):
     @functools.wraps(view)

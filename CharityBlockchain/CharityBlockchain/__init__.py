@@ -46,7 +46,11 @@ def create_app():
         return render_template('sign_in.html',
             tilte='登录',
             year=datetime.now().year)
-
+    @app.route('/logintodo')
+    def logintodo():
+        return '''
+            <html><head></head><body><p>你登录了</p></body></html>
+        '''
     @app.route('/sign_up')
     def sign_up():
         """Sign up the System"""
