@@ -22,9 +22,9 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ url_for('home') }}">主页</a></li>
-                    <li><a href="{{ url_for('about') }}">关于</a></li>
-                    <li><a href="{{ url_for('contact') }}">联系我们</a></li>
+                    <li><a href="{{ url_for('home.home') }}">主页</a></li>
+                    <li><a href="{{ url_for('home.about') }}">关于</a></li>
+                    <li><a href="{{ url_for('home.contact') }}">联系我们</a></li>
                     <li><a href="{{ url_for('user.login') }}">登录</a></li>
                     <li><a href="{{ url_for('user.register') }}">注册</a></li>
                 </ul>

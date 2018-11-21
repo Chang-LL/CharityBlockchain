@@ -31,6 +31,9 @@
     <Compile Include="CharityBlockchain\db.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="CharityBlockchain\home.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="CharityBlockchain\user.py">
       <SubType>Code</SubType>
     </Compile>
@@ -45,11 +48,15 @@
     <Folder Include="CharityBlockchain\static\fonts\" />
     <Folder Include="CharityBlockchain\static\scripts\" />
     <Folder Include="CharityBlockchain\templates\" />
+    <Folder Include="CharityBlockchain\templates\home\" />
+    <Folder Include="CharityBlockchain\templates\view\" />
     <Folder Include="CharityBlockchain\templates\user\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CharityBlockchain\static\scripts\view.js" />
     <Content Include="CharityBlockchain\templates\user\register.html" />
     <Content Include="CharityBlockchain\templates\user\login.html" />
+    <Content Include="CharityBlockchain\templates\view\view.html" />
     <Content Include="requirements.txt" />
     <Content Include="CharityBlockchain\static\content\bootstrap.css" />
     <Content Include="CharityBlockchain\static\content\bootstrap.min.css" />
@@ -73,8 +80,8 @@
     <Content Include="CharityBlockchain\static\scripts\respond.js" />
     <Content Include="CharityBlockchain\static\scripts\respond.min.js" />
     <Content Include="CharityBlockchain\static\scripts\_references.js" />
-    <Content Include="CharityBlockchain\templates\about.html" />
-    <Content Include="CharityBlockchain\templates\contact.html" />
+    <Content Include="CharityBlockchain\templates\home\about.html" />
+    <Content Include="CharityBlockchain\templates\home\contact.html" />
     <Content Include="CharityBlockchain\templates\index.html" />
     <Content Include="CharityBlockchain\templates\layout.html" />
   </ItemGroup>

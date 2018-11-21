@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }} - CharityBlockchain</title>
+    <link rel="stylesheet" type="text/css" href="/static/content/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/static/content/site.css" />
+    <script src="/static/scripts/modernizr-2.6.2.js"></script>
+    <style>
+        header {
+            background-color: black;
+            color: white;
+            text-align: center;
+            padding: 5px;
+        }
+
+        nav {
+            line-height: 30px;
+            background-color: #eeeeee;
+            height: 300px;
+            width: 200px;
+            float: left;
+            padding: 5px;
+        }
+
+        section {
+            width: 350px;
+            float: left;
+            padding: 10px;
+        }
+
+        footer {
+            background-color: black;
+            color: white;
+            clear: both;
+            text-align: center;
+            padding: 5px;
+        }
+    </style>
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.js">
+    </script>
+</head>
+
+<body>
+    <header>
+        {% block content %}
+        <h2>{{ title }}</h2>
+        {% endblock %}
+    </header>
+
+    <nav>
+        <a href="#usermessage" id="hu">个人信息</a><br>
+        <a href="#donate" id="hd">捐款</a><br>
+        <a href="#record" id="hr">查看记录</a><br>
+        <a href="#foundation" id="hf">查看基金会记录</a><br>
+    </nav>
+
+    <div id="usermessage" data-role="page">
+        <p>usermessage</p>
+    </div>
+    <div id="donate" data-role="page" style="display: none;">
+        <p>donate</p>
+        <form method="post">
+            <label for="rmb">捐款人民币</label>
+            <input name="rmb" id="rmb" required />
+            <br />
+            <label for="sfound">密 码</label>
+            <select name="sfound"id="sfound" required>
+                <option value="mainFound">主基金</option>
+                <option value="aFound">A</option>
+                <option value="bFound">B</option>
+                <option value="cFound">C</option>
+            </select>
+            <br />
+            <input type="submit" value="确定" />
+        </form>
+    </div>
+    <div id="record" data-role="page" style="display: none;">
+        <p>re</p>
+    </div>
+    <div id="foundation" data-role="page" style="display: none;">
+        <p>fo</p>
+    </div>
+    <footer>
+        <p>&copy; {{ year }} - CharityBlockchain</p>
+    </footer>
+    <script src="/static/scripts/view.js"></script>
+</body>
+</html>
+
+

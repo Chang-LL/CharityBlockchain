@@ -11,19 +11,19 @@ from werkzeug.security import(
     )
 from CharityBlockchain.db import get_db
 
-user=Blueprint('user',__name__,url_prefix='/user')
+user = Blueprint('user',__name__,url_prefix='/user')
 
 @user.route('/register',methods=('GET','POST'))
 def register():
-    if request.method=='POST':
-        username=request.form['username']
-        password=request.form['password']
-        db=get_db()
-        error=None
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        db = get_db()
+        error = None
         if not username:
-            error="请输入用户名!"
+            error = "请输入用户名!"
         elif not password:
-            error="请输入密码!"
+            error = "请输入密码!"
         elif db.execute('SELECT id FROM user WHERE username = ?',
             (username,)).fetchone() is not None:
             error = f'用户名 {username} 已存在!'
@@ -37,7 +37,7 @@ def register():
 
 @user.route('/login',methods=('GET','POST'))
 def login():
-    if request.method=='POST':
+    if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
         db = get_db()
@@ -53,7 +53,7 @@ def login():
         if error is None:
             session.clear()
             session['user_id'] = user['id']
-            return redirect(url_for('logintodo'))
+            return redirect(url_for('view.info',username=username))
         flash(error)
 
     return render_template('user/login.html')

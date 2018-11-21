@@ -2,7 +2,7 @@
 The flask application package.
 """
 import os
-from flask import Flask
+from flask import Flask,redirect,url_for
 def create_app():
     app = Flask(__name__)
     app.config.from_mapping(SECRET_KEY='qetasg',#TODO
@@ -11,50 +11,11 @@ def create_app():
     db.init_app(app)
     from CharityBlockchain import user
     app.register_blueprint(user.user)
-    import CharityBlockchain.views
-    from datetime import datetime
-    from flask import render_template
-    #from CharityBlockchain import app
-
+    from CharityBlockchain import home
+    app.register_blueprint(home.homepage)
+    from CharityBlockchain import views
+    app.register_blueprint(views.view)
     @app.route('/')
-    @app.route('/home')
-    def home():
-        """Renders the home page."""
-        return render_template('index.html',
-            title='Home Page',
-            year=datetime.now().year,)
-
-    @app.route('/contact')
-    def contact():
-        """Renders the contact page."""
-        return render_template('contact.html',
-            title='联系我们',
-            year=datetime.now().year,
-            message='联系页面')
-
-    @app.route('/about')
-    def about():
-        """Renders the about page."""
-        return render_template('about.html',
-            title='关于',
-            year=datetime.now().year,
-            message='区块链公益')
-
-    @app.route('/sign_in')
-    def sign_in():
-        """Sign in the System"""
-        return render_template('sign_in.html',
-            tilte='登录',
-            year=datetime.now().year)
-    @app.route('/logintodo')
-    def logintodo():
-        return '''
-            <html><head></head><body><p>你登录了</p></body></html>
-        '''
-    @app.route('/sign_up')
-    def sign_up():
-        """Sign up the System"""
-        return render_template('sign_up.html',
-            tilte='注册',
-            year=datetime.now().year)
+    def Home():
+        return redirect(url_for('home.home'))
     return app
