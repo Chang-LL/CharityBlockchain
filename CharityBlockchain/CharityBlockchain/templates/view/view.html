@@ -1,13 +1,6 @@
-﻿<!DOCTYPE html>
-<html>
+﻿{% extends "layout.html" %}
+{% block content %}
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ title }} - CharityBlockchain</title>
-    <link rel="stylesheet" type="text/css" href="/static/content/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="/static/content/site.css" />
-    <script src="/static/scripts/modernizr-2.6.2.js"></script>
     <style>
         header {
             background-color: black;
@@ -41,15 +34,6 @@
     </style>
     <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.js">
     </script>
-</head>
-
-<body>
-    <header>
-        {% block content %}
-        <h2>{{ title }}</h2>
-        {% endblock %}
-    </header>
-
     <nav>
         <a href="#usermessage" id="hu">个人信息</a><br>
         <a href="#donate" id="hd">捐款</a><br>
@@ -59,15 +43,64 @@
 
     <div id="usermessage" data-role="page">
         <p>usermessage</p>
+        <!--<p>{{ account }}</p>-->
     </div>
+    {% if account_type == 0 %}
+    <div id="donate" data-role="page" style="display: none;">
+        <p>管理员</p>
+        <form method="post">
+            <label for="sfound">项目</label>
+            <select name="sfound" id="sfound" required>
+                <option value="mainFound">主基金</option>
+                <option value="aFound">A</option>
+                <option value="bFound">B</option>
+                <option value="cFound">C</option>
+            </select>
+            <label for="sperson">二级基金</label>
+            <select name="sperson" id="sperson" required>
+                <option value="aPerson">二级A</option>
+                <option value="bPerson">二级B</option>
+                <option value="cPerson">二级C</option>
+            </select>
+            <br />
+            <label for="rmb">捐款人民币</label>
+            <input name="rmb" id="rmb" required />
+            <br />
+            <input type="submit" value="确定" />
+        </form>
+    </div>
+    {% elif account_type == 1 %}
+    <div id="donate" data-role="page" style="display: none;">
+        <p>二级基金管理员</p>
+        <form method="post">
+            <label for="sfound">项目</label>
+            <select name="sfound" id="sfound" required>
+                <option value="aFound">A</option>
+                <option value="bFound">B</option>
+                <option value="cFound">C</option>
+            </select>
+            <label for="sperson">负责人</label>
+            <select name="sperson" id="sperson" required>
+                <option value="aPerson">负责人A</option>
+                <option value="bPerson">负责人B</option>
+                <option value="cPerson">负责人C</option>
+            </select>
+            <br />
+            <label for="rmb">捐款人民币</label>
+            <input name="rmb" id="rmb" required />
+            <br />
+            <input type="submit" value="确定" />
+        </form>
+    </div>
+    {% elif account_type == 2 %}
     <div id="donate" data-role="page" style="display: none;">
         <p>donate</p>
         <form method="post">
             <label for="rmb">捐款人民币</label>
-            <input name="rmb" id="rmb" required />
+            <input name="rmb" id="rmb" type="number" required />
             <br />
-            <label for="sfound">密 码</label>
-            <select name="sfound"id="sfound" required>
+            <label for="sfound">项目</label>
+            <select name="sfound" id="sfound" required>
                 <option value="mainFound">主基金</option>
                 <option value="aFound">A</option>
                 <option value="bFound">B</option>
@@ -77,17 +110,41 @@
             <input type="submit" value="确定" />
         </form>
     </div>
+    {% elif account_type == 3 %}
+    <div id="donate" data-role="page" style="display: none;">
+        <p>受捐助负责人</p>
+        <form method="post">
+            <label for="rmb">捐款人民币</label>
+            <input name="rmb" id="rmb" required />
+            <br />
+            <label for="sfound">项目</label>
+            <select name="sfound" id="sfound" required>
+                <option value="mainFound">主基金</option>
+                <option value="aFound">A</option>
+                <option value="bFound">B</option>
+                <option value="cFound">C</option>
+            </select>
+            <br />
+            <input type="submit" value="确定" />
+        </form>
+    </div>
+    {% endif %}
     <div id="record" data-role="page" style="display: none;">
-        <p>re</p>
+        <p>项目记录</p>
+        <form method="get">
+            <label for="viewfound">项目</label>
+            <select name="viewfound" id="viewfound" required>
+                <option value="mainFound">主基金</option>
+                <option value="aFound">A</option>
+                <option value="bFound">B</option>
+                <option value="cFound">C</option>
+            </select>
+            <br />
+            <input type="submit" value="确定" />
+        </form>
     </div>
     <div id="foundation" data-role="page" style="display: none;">
-        <p>fo</p>
+        <p>基金会</p>
     </div>
-    <footer>
-        <p>&copy; {{ year }} - CharityBlockchain</p>
-    </footer>
     <script src="/static/scripts/view.js"></script>
-</body>
-</html>
-
-
+{% endblock %}

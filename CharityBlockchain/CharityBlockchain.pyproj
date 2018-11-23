@@ -56,6 +56,8 @@
     <Content Include="CharityBlockchain\static\scripts\view.js" />
     <Content Include="CharityBlockchain\templates\user\register.html" />
     <Content Include="CharityBlockchain\templates\user\login.html" />
+    <Content Include="CharityBlockchain\templates\view\finish.html" />
+    <Content Include="CharityBlockchain\templates\view\project.html" />
     <Content Include="CharityBlockchain\templates\view\view.html" />
     <Content Include="requirements.txt" />
     <Content Include="CharityBlockchain\static\content\bootstrap.css" />

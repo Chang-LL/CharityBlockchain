@@ -16,20 +16,28 @@ user = Blueprint('user',__name__,url_prefix='/user')
 @user.route('/register',methods=('GET','POST'))
 def register():
     if request.method == 'POST':
+        account_type = {"Aadmin":0,"Badmin":1,"Donor":2,"help":3}
         username = request.form['username']
         password = request.form['password']
+        email = request.form['email']
+        phone = request.form['phone']
+        type = account_type.get(request.form['accounttype'])
         db = get_db()
         error = None
         if not username:
             error = "请输入用户名!"
         elif not password:
             error = "请输入密码!"
+        elif type is None:
+            error = "请选择账户类型!"
         elif db.execute('SELECT id FROM user WHERE username = ?',
             (username,)).fetchone() is not None:
             error = f'用户名 {username} 已存在!'
         if error is None:
-            db.execute('INSERT INTO user (username,password) VALUES (?,?)',
-                (username,generate_password_hash(password)))
+            db.execute('''INSERT INTO user (username,password,email,
+                phone,account_type) VALUES (?,?,?,?,?)''',
+                (username,generate_password_hash(password),email,
+                 phone,type))
             db.commit()
             return redirect(url_for('user.login'))
         flash(error)
@@ -53,7 +61,8 @@ def login():
         if error is None:
             session.clear()
             session['user_id'] = user['id']
-            return redirect(url_for('view.info',username=username))
+            usertype = user['account_type']
+            return redirect(url_for('view.info',username=username,usertype=usertype))
         flash(error)
 
     return render_template('user/login.html')
@@ -69,7 +78,7 @@ def load_logged_in_user():
 @user.route('/logout')
 def logout():
     session.clear()
-    return redirect(url_for('home'))
+    return redirect(url_for('user.login'))
 
 def login_required(view):
     @functools.wraps(view)
@@ -78,3 +87,4 @@ def login_required(view):
             return redirect(url_for('user.login'))
         return view(**kwargs)
     return wrapped_view
+

@@ -10,6 +10,20 @@
     <label for="password">密 码</label>
     <input type="password" name="password" id="password" required />
     <br />
+    <label for="email">邮箱</label>
+    <input type="email" name="email" id="email"  />
+    <br />
+    <label for="phone">电话</label>
+    <input type="tel" name="phone" id="phone" />
+    <br />
+    <label for="accounttype">类型</label>
+    <select name="accounttype" id="accounttype" required>
+        <option value="Aadmin">主管理员</option>
+        <option value="Badmin">二级管理</option>
+        <option value="Donor">捐助人</option>
+        <option value="help">被捐助人</option>
+    </select>
+    <br />
     <input type="submit" value="注册" />
 </form>
 {% endblock %}
