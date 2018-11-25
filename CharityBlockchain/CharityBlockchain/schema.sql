@@ -50,6 +50,6 @@ insert into project(name,now_money,createDate,info)
 insert into project(name,now_money,createDate,info)
 	values ('aFound',0,DATE(),'Project B,100 desks');
 insert into project(name,now_money,createDate,info)
-	values ('bFound',0,DATE(),'Project B,100 desks');
+	values ('cFound',0,DATE(),'Project C,100 chairs');
 	insert into project(name,now_money,createDate,info)
-	values ('cFound',0,DATE(),'Project B,100 desks');
+	values ('dFound',0,DATE(),'Project D,100 computers');
