@@ -1,0 +1,27 @@
+﻿{% extends "layout.html" %}
+{% block content %}
+<h2>{{ project['name'] }}: {{ project['info'] }}现有资金:{{ project['now_money'] }} - {{ createteDate }}</h2>
+{% if project_deal %}
+<table>
+    <tr>
+        <th>来源</th>
+        <th>去路</th>
+        <th>资金</th>
+        <th>日期</th>
+        <th>哈希</th>
+    </tr>
+    {% for deal in project_deal %}
+        <tr>
+            <td>{{ deal['from_id'] }}</td>
+            <td>{{ deal['to_id'] }}</td>
+            <td>{{ deal['account'] }}</td>
+            <td>{{ deal['trandate'] }}</td>
+            <td>{{ deal['hash'] }}</td>
+        </tr>
+    {% endfor %}
+</table>
+{% else %}
+<h2>No deal found</h2>
+{% endif %}
+<a href="info">返回上一页</a>
+{% endblock %}

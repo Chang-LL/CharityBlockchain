@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\li\Desktop\CharityBlockchain-view\CharityBlockchain\env"
+VIRTUAL_ENV="C:\Users\li\Desktop\BlockChain\CharityBlockchain-view\CharityBlockchain\env"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
